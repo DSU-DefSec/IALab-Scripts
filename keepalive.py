@@ -24,7 +24,7 @@ DSU_PASSWORD: list[int] = [ord(a) ^ XOR_KEY[i] for i, a in enumerate(DSU_PASSWOR
 
 FIRST_RUN: bool = True
 LAST = 0
-
+print("Initializing...")
 while True:
     LAST = datetime.datetime.now()
     pwd = "".join(chr(a ^ XOR_KEY[i]) for i, a in enumerate(DSU_PASSWORD))
@@ -82,7 +82,7 @@ while True:
     del resp
 
     if FIRST_RUN:
-        print("Renew successful!")
+        print("Auth successful. Autorenew started!")
 
     next_run = datetime.datetime.now() + datetime.timedelta(hours=23, minutes=30)
     time.sleep((next_run - LAST).seconds)
